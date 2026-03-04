@@ -1,0 +1,20 @@
+{
+    "name": "nest",
+    "module": "src/main.ts",
+    "type": "module",
+    "private": true,
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    },
+    "dependencies": {
+        "@types/better-sqlite3": "^7.6.13",
+        "@types/express": "^5.0.6",
+        "express": "^5.2.1"
+    },
+    "scripts": {
+        "dev": "bun --watch ."
+    }
+}
