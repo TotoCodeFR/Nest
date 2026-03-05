@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
+:root {
+    --num-columns: 8;
+    --column-width: min(
+        128px,
+        10vw
+    ); /* Responsive: max 128px, shrinks on small screens */
+    --gap: 16px;
+}
+
 body,
 html {
     padding: 0;
@@ -37,7 +46,10 @@ body {
     padding: 0;
     margin: 0;
     margin-bottom: 32px;
-    align-self: flex-start;
+    width: calc(
+        var(--num-columns) * var(--column-width) + (var(--num-columns) - 1) *
+            var(--gap)
+    );
 }
 
 #name {
@@ -46,9 +58,12 @@ body {
 
 #rooms {
     display: grid;
-    grid-template-columns: repeat(8, 128px);
-    grid-template-rows: repeat(5, 128px);
-    gap: 16px;
+    grid-template-columns: repeat(var(--num-columns), var(--column-width));
+    grid-template-rows: repeat(
+        5,
+        var(--column-width)
+    ); /* Also made responsive */
+    gap: var(--gap);
 }
 
 #rooms > div.room {
