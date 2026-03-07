@@ -1,0 +1,107 @@
+@font-face {
+    font-display: swap;
+    font-family: "Albert Sans";
+    font-style: normal;
+    font-weight: 300;
+    src: url("/fonts/albert-sans-v4-latin-300.woff2") format("woff2");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "Albert Sans";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/albert-sans-v4-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "Albert Sans";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/fonts/albert-sans-v4-latin-500.woff2") format("woff2");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "Albert Sans";
+    font-style: normal;
+    font-weight: 600;
+    src: url("/fonts/albert-sans-v4-latin-600.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Only Emoji";
+    src:
+        local("Apple Color Emoji"),
+        local("Android Emoji"),
+        local("Segoe UI Emoji"),
+        local("Segoe UI Symbol"),
+        local("Noto Color Emoji"),
+        url("/fonts/noto-color-emoji-v39-emoji-regular.woff2") format("woff2");
+    unicode-range:
+        U+1F600- U+1F64F,
+        U+1F300- U+1F5FF,
+        U+1F680- U+1F6FF,
+        U+1F700- U+1F77F,
+        U+1F780- U+1F7FF,
+        U+1F800- U+1F8FF,
+        U+1F900- U+1F9FF,
+        U+1FA00- U+1FA6F,
+        U+1FA70- U+1FAFF,
+        U+E0000- U+E007F;
+}
+
+:root {
+    /* Corner radius */
+    --corner-radius: 16px;
+
+    /* Colors */
+    --color-bg: hsl(40, 20%, 97%);
+    --color-surface: hsl(40, 15%, 91%);
+    --color-accent: hsl(27, 100%, 84%);
+    --color-accent-hover: hsl(27, 100%, 74%);
+    --color-text: hsl(0, 0%, 10%);
+    --color-text-muted: hsl(0, 0%, 40%);
+    --color-border: hsl(40, 10%, 88%);
+    --color-text-on-accent: hsl(0, 0%, 10%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px hsla(40, 20%, 20%, 0.06);
+    --shadow-md: 0 4px 16px hsla(40, 20%, 20%, 0.08);
+
+    /* Typography */
+    --font-family:
+        "Albert Sans", "Only Emoji", system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+        "Open Sans", "Helvetica Neue", sans-serif;
+
+    --font-size-xs: 11px;
+    --font-size-sm: 13px;
+    --font-size-base: 15px;
+    --font-size-md: 17px;
+    --font-size-lg: 20px;
+    --font-size-xl: 24px;
+    --font-size-2xl: 28px;
+
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+
+    --line-height-base: 1.5;
+    --line-height-tight: 1.2;
+
+    --letter-spacing-label: 0.08em;
+
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+    --space-2xl: 32px;
+
+    /* Transitions */
+    --transition-speed: 150ms;
+}
