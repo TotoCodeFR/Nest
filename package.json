@@ -14,6 +14,6 @@
         "express": "^5.2.1"
     },
     "scripts": {
-        "dev": "bun --watch ."
+        "dev": "bun --watch src/main.ts"
     }
 }
