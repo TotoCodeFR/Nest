@@ -1,6 +1,7 @@
 import express from 'express';
 import db, { resetDatabase } from '../db/main';
 import path from 'path';
+import { loadApps } from './util/loader';
 
 const app = express();
 const port = Number(process.env.PORT) || 4567;
@@ -16,6 +17,8 @@ app.get('/api/rooms', (req, res) => {
 });
 
 app.use('/', express.static(path.join(__dirname, '..', 'app')));
+
+loadApps(app);
 
 app.listen(port, '127.0.0.1', () => {
     console.log(`Server is running on port ${port}`);
