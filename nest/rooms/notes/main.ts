@@ -19,7 +19,7 @@ export const createFrontend = (vite?: ViteDevServer) => {
     router.get("/", async (req, res, next) => {
         try {
             let html = fs.readFileSync(
-                path.resolve("src/rooms/notes/frontend/index.html"),
+                path.resolve(__dirname, "frontend/index.html"),
                 "utf-8",
             );
             if (vite) {
