@@ -1,38 +1,38 @@
-import { defineConfig, build } from 'vite';
-import { resolve } from 'path';
-import fs from 'node:fs';
+import { defineConfig } from "vite";
+import { resolve } from "path";
+import fs from "node:fs";
 
-const roomsPath = resolve('src/rooms');
-
-const getRooms = (): string[] => {
-    if (!fs.existsSync(roomsPath)) return [];
-    return fs.readdirSync(roomsPath, { withFileTypes: true })
-        .filter(e => e.isDirectory())
-        .map(e => e.name);
-};
-
-const rooms = getRooms();
-
-const inputs: Record<string, string> = {};
-for (const room of rooms) {
-    const htmlPath = resolve(`src/rooms/${room}/frontend/index.html`);
-    if (fs.existsSync(htmlPath)) {
-        inputs[room] = htmlPath;
-    }
-}
+const roomsDir = resolve(__dirname, "src/rooms");
+const roomEntries = fs.existsSync(roomsDir)
+    ? fs
+          .readdirSync(roomsDir, { withFileTypes: true })
+          .filter((dirent) => dirent.isDirectory())
+          .reduce(
+              (acc, dirent) => {
+                  const roomName = dirent.name;
+                  const indexPath = resolve(
+                      roomsDir,
+                      roomName,
+                      "frontend/index.html",
+                  );
+                  if (fs.existsSync(indexPath)) {
+                      acc[roomName] = indexPath;
+                  }
+                  return acc;
+              },
+              {} as Record<string, string>,
+          )
+    : {};
 
 export default defineConfig({
-    root: 'src',
     build: {
-        outDir: resolve('dist'),
+        outDir: resolve(__dirname, "dist"),
         emptyOutDir: true,
         rollupOptions: {
-            input: inputs,
-            output: {
-                assetFileNames: 'rooms/[name]/assets/[name]-[hash][extname]',
-                chunkFileNames: 'rooms/[name]/assets/[name]-[hash].js',
-                entryFileNames: 'rooms/[name]/[name].js',
-            }
-        }
-    }
+            input: {
+                main: resolve(__dirname, "src/app/index.html"),
+                ...roomEntries,
+            },
+        },
+    },
 });

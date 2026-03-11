@@ -1,2 +1,2 @@
 import "./server/main";
-import './db/main';
+import "./db/main";

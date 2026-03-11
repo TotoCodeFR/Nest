@@ -1,13 +1,13 @@
-import { Router } from 'express';
-import { type ViteDevServer } from 'vite';
-import fs from 'node:fs';
-import path from 'node:path';
+import { Router } from "express";
+import { type ViteDevServer } from "vite";
+import fs from "node:fs";
+import path from "node:path";
 
 // API Router
 const apiRouter = Router();
 
-apiRouter.get('/', (req, res) => {
-    res.json({ room: 'notes', status: 'ok' });
+apiRouter.get("/", (req, res) => {
+    res.json({ room: "notes", status: "ok" });
 });
 
 export { apiRouter as api };
@@ -16,15 +16,16 @@ export { apiRouter as api };
 export const createFrontend = (vite?: ViteDevServer) => {
     const router = Router();
 
-    router.get('/', async (req, res, next) => {
+    router.get("/", async (req, res, next) => {
         try {
             let html = fs.readFileSync(
-                path.resolve('src/rooms/notes/frontend/index.html'), 'utf-8'
+                path.resolve("src/rooms/notes/frontend/index.html"),
+                "utf-8",
             );
             if (vite) {
                 html = await vite.transformIndexHtml(req.originalUrl, html);
             }
-            res.status(200).set({ 'Content-Type': 'text/html' }).send(html);
+            res.status(200).set({ "Content-Type": "text/html" }).send(html);
         } catch (e) {
             next(e);
         }
