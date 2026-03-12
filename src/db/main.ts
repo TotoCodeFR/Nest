@@ -49,7 +49,7 @@ function initializeDatabase() {
             )
         `);
 
-        const roomsDir = path.join(__dirname, "..", "rooms");
+        const roomsDir = path.join(__dirname, "..", "..", "nest", "rooms");
         fs.readdirSync(roomsDir).forEach((room) => {
             const roomPath = path.join(roomsDir, room);
             if (!fs.lstatSync(roomPath).isDirectory()) return;

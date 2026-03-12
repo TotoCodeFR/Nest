@@ -5,23 +5,23 @@ import fs from "node:fs";
 const roomsDir = resolve(__dirname, "src/rooms");
 const roomEntries = fs.existsSync(roomsDir)
     ? fs
-          .readdirSync(roomsDir, { withFileTypes: true })
-          .filter((dirent) => dirent.isDirectory())
-          .reduce(
-              (acc, dirent) => {
-                  const roomName = dirent.name;
-                  const indexPath = resolve(
-                      roomsDir,
-                      roomName,
-                      "frontend/index.html",
-                  );
-                  if (fs.existsSync(indexPath)) {
-                      acc[roomName] = indexPath;
-                  }
-                  return acc;
-              },
-              {} as Record<string, string>,
-          )
+        .readdirSync(roomsDir, { withFileTypes: true })
+        .filter((dirent) => dirent.isDirectory())
+        .reduce(
+            (acc, dirent) => {
+                const roomName = dirent.name;
+                const indexPath = resolve(
+                    roomsDir,
+                    roomName,
+                    "frontend/index.html",
+                );
+                if (fs.existsSync(indexPath)) {
+                    acc[roomName] = indexPath;
+                }
+                return acc;
+            },
+            {} as Record<string, string>,
+        )
     : {};
 
 export default defineConfig({
