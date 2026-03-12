@@ -7,3 +7,8 @@ Editor.make()
     })
     .use(commonmark)
     .create();
+
+const sidebar = document.getElementById("sidebar");
+const sidebarFileTemp = sidebar?.querySelector<HTMLTemplateElement>("template.sidebarFile");
+const sidebarFile = sidebarFileTemp?.content;
+

@@ -1,4 +1,28 @@
-.milkdown > div {
+body {
+    display: flex;
+    flex-direction: row;
     height: 100vh;
+    margin: 0;
+}
+
+#editor {
+    flex: 1;
+    display: flex;
+}
+
+.milkdown {
+    flex: 1;
+    display: flex;
+}
+
+.milkdown > div {
     padding: 16px;
+    flex-grow: 1;
+    outline: none;
+}
+
+#sidebar {
+    padding: 8px;
+    width: 250px;
+    background-color: var(--color-surface);
 }
